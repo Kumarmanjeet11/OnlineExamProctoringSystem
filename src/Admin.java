@@ -1,8 +1,13 @@
 
+    import java.util.ArrayList;
     class Admin extends User {
+    ArrayList<Question> questionBank = new ArrayList<>();    
 
     public Admin(String username, String password) {
         super(username, password);
+    }
+     public void addQuestion(Question q) {
+        questionBank.add(q);
     }
 
     @Override
