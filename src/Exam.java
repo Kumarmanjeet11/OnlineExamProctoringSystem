@@ -29,15 +29,48 @@ class Exam {
         return score;
     }
 }
+class ExamTimer extends Thread {
+    int time;
+
+    public ExamTimer(int time) {
+        this.time = time;
+    }
+    @Override
+    public void run() {
+        try {
+            for (int i = time; i > 0; i--) {
+                System.out.println("Time left: " + i);
+                Thread.sleep(1000);
+            }
+            System.out.println("Time's up!");
+        } catch (InterruptedException e) {
+            System.out.println("Timer interrupted");
+        }
+    }
+}
+class Proctoring {
+    public void detectActivity(boolean switchedTab) {
+        if (switchedTab) {
+            System.out.println("Warning: Tab switched!");
+        }
+    }
+}
 
 class TimedExam extends Exam {
+    Proctoring proctoring;
+
     public TimedExam(List<Question> questions) {
         super(questions);
+        this.proctoring = new Proctoring();
     }
 
     @Override
     public void startExam() {
         System.out.println("Starting timed exam...");
+        ExamTimer timer = new ExamTimer(300);
+        timer.start();
+        proctoring.detectActivity(false);
+        super.startExam();
     }
 }
 
@@ -45,7 +78,7 @@ class Main {
     public static void main(String[] args) {
         System.out.println("Exam system initialized");
         List<Question> questions = new ArrayList<>();
-        TimedExam exam = new TimedExam(questions);
+         TimedExam exam = new TimedExam(questions);
         exam.startExam();
     }
 }
