@@ -1,14 +1,12 @@
 import java.util.*;
 
 class Exam {
-
     List<Question> questions;
     Map<Question, Integer> answers = new HashMap<>();
 
     public Exam(List<Question> questions) {
         this.questions = questions;
     }
-
 
     public void startExam() {
         try (Scanner sc = new Scanner(System.in)){
@@ -29,6 +27,26 @@ class Exam {
             }
         }
         return score;
+    }
+}
+
+class TimedExam extends Exam {
+    public TimedExam(List<Question> questions) {
+        super(questions);
+    }
+
+    @Override
+    public void startExam() {
+        System.out.println("Starting timed exam...");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Exam system initialized");
+        List<Question> questions = new ArrayList<>();
+        TimedExam exam = new TimedExam(questions);
+        exam.startExam();
     }
 }
     
