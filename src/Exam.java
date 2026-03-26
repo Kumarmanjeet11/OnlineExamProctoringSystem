@@ -11,15 +11,14 @@ class Exam {
 
 
     public void startExam() {
-        Scanner sc = new Scanner(System.in);
-
-        for (Question q : questions) {
-            q.display();
-            System.out.print("Enter answer: ");
-            int ans = sc.nextInt();
-            answers.put(q, ans);
+        try (Scanner sc = new Scanner(System.in)){
+            for (Question q : questions) {
+                q.display();
+                System.out.print("Enter answer:");
+                int ans = sc.nextInt();
+                answers.put(q, ans);
+            }
         }
-        sc.close();
     }
 
     public int calculateResult() {
