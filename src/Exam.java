@@ -40,11 +40,16 @@ class ExamTimer extends Thread {
         try {
             for (int i = time; i > 0; i--) {
                 System.out.println("Time left: " + i);
-                Thread.sleep(1000);
+                try {
+                    Thread.sleep(1000);  // Intentional sleep in loop for timer countdown
+                } catch (InterruptedException e) {
+                    System.out.println("Timer interrupted");
+                    break;
+                }
             }
             System.out.println("Time's up!");
-        } catch (InterruptedException e) {
-            System.out.println("Timer interrupted");
+        } catch (Exception e) {
+            System.out.println("Timer error: " + e.getMessage());
         }
     }
 }
