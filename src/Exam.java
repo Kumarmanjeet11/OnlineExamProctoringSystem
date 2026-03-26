@@ -1,12 +1,14 @@
 import java.util.*;
 
 class Exam {
+
     List<Question> questions;
     Map<Question, Integer> answers = new HashMap<>();
 
     public Exam(List<Question> questions) {
         this.questions = questions;
     }
+
 
     public void startExam() {
         Scanner sc = new Scanner(System.in);
@@ -17,6 +19,7 @@ class Exam {
             int ans = sc.nextInt();
             answers.put(q, ans);
         }
+        sc.close();
     }
 
     public int calculateResult() {
