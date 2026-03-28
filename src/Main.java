@@ -1,8 +1,10 @@
 public class Main {
     public static void main(String[] args) {
         Admin admin = new Admin("admin","123");
-        admin.login();
-
+        if(!admin.login()){
+            System.out.println("Access denied!");
+            return;
+        }
         Question q1 = new Question ("what is 2 + 2 = ?", new String[]{"1","2","3","4",},4);
         admin.addQuestion(q1);
         Question q2 = new Question ("Which language is used for android development ?",new String[]{"python","java","C++","HTML"},2);

@@ -7,6 +7,6 @@ abstract class User {
         this.password = password;
     }
 
-    public abstract void login();
+    public abstract boolean login();
     public abstract void logout();
 }

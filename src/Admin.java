@@ -12,7 +12,7 @@
     }
 
     @Override
-    public void login() {
+    public boolean login() {
     Scanner sc = new Scanner(System.in);
 
     System.out.print("Enter username: ");
@@ -23,8 +23,10 @@
 
     if (inputUsername.equals(username) && inputPassword.equals(password)) {
         System.out.println("Login successful");
+        return true;
     } else {
         System.out.println("Invalid login");
+        return false;
     }
 }
     @Override

@@ -1,16 +1,15 @@
 import java.util.*;
+class Exam{
+    List<Question> question;
+    Map<Question , Integer> answers = new HashMap<>();
 
-class Exam {
-    List<Question> questions;
-    Map<Question, Integer> answers = new HashMap<>();
-
-    public Exam(List<Question> questions) {
-        this.questions = questions;
-    }
+    public Exam(List<Question> question){
+     this.question = question;
+}
 
     public void startExam() {
         try (Scanner sc = new Scanner(System.in)){
-            for (Question q : questions) {
+            for (Question q : question) {
                 q.display();
                 System.out.print("Enter answer:");
                 int ans = sc.nextInt();
@@ -21,7 +20,7 @@ class Exam {
 
     public int calculateResult() {
         int score = 0;
-        for (Question q : questions) {
+        for (Question q : question) {
             if (q.checkAnswer(answers.get(q))) {
                 score++;
             }
