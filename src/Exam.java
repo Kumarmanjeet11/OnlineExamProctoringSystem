@@ -14,15 +14,15 @@ class Exam {
                 q.display();
                 System.out.print("Enter answer:");
                 int ans = sc.nextInt();
-                answers.put(q, ans);
+                answers .put(q,ans);
+                }
             }
         }
-    }
 
     public int calculateResult() {
         int score = 0;
         for (Question q : questions) {
-            if (answers.get(q) == q.correctAnswer) {
+            if (q.checkAnswer(answers.get(q))) {
                 score++;
             }
         }
@@ -72,21 +72,14 @@ class TimedExam extends Exam {
     @Override
     public void startExam() {
         System.out.println("Starting timed exam...");
-        ExamTimer timer = new ExamTimer(300);
-        timer.start();
         proctoring.detectActivity(false);
         super.startExam();
+        ExamTimer timer = new ExamTimer(300);
+        timer.start();
     }
 }
 
-class Main {
-    public static void main(String[] args) {
-        System.out.println("Exam system initialized");
-        List<Question> questions = new ArrayList<>();
-         TimedExam exam = new TimedExam(questions);
-        exam.startExam();
-    }
-}
+
     
 
 

@@ -1,4 +1,4 @@
-class Question {
+public class Question {
     String questionText;
     String[] options;
     int correctAnswer;
