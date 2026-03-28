@@ -5,7 +5,7 @@ class Student extends User {
     }
 
     @Override
-    public void login() {
+    public boolean login() {
         try{
             if (username.isEmpty()) {
             throw new InvalidLoginException("Username cannot be empty");
@@ -14,7 +14,7 @@ class Student extends User {
     } catch (InvalidLoginException e) {
         System.out.println(e.getMessage());
     }
-        }
+}
     @Override
     public void logout() {
         System.out.println("Student logged out");
